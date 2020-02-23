@@ -1,0 +1,26 @@
+<p>form-learning works!</p>
+formGroup formGroupName
+formControl formControlName
+formArrayName
+
+<!--<nzi-form [formName]="fromModel">-->
+<form [formGroup]="fromModel" (submit)="OnSubmit()" >
+  <div formGroupName="dateRange">
+    起始日期：<input type="date" formControlName="form">
+    截至日期：<input type="date" formControlName="to">
+  </div>
+  <div formArrayName="emails">
+    <ul>
+      <li *ngFor="let e of this.fromModel.get('emails').value; let i=index;">
+        <input type="text" [formControlName]="i">
+      </li>
+    </ul>
+    <button type="button" (click)="addEmails()">增加Email</button>
+  </div>
+  <div>
+    <button type="submit">保存</button>
+  </div>
+</form>
+<!--</nzi-form>-->
+
+
